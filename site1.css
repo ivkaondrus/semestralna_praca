@@ -1,0 +1,36 @@
+body {
+    background: linear-gradient(-45deg, purple, darkorchid, mediumorchid, mediumpurple);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    height: 100vh;
+}
+/* zdroj pre variaciu gradientov: https://1stwebdesigner.com/15-css-background-effects/ */
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+h5, p {
+    color: darkorchid;
+    font-family: "Comic Sans MS";
+}
+.carousel .carousel-item {
+    height: 400px;
+}
+
+.carousel-item img {
+    position: absolute;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+    min-height: 100px;
+    height: 40vw;
+    width: 40vw;
+}
+
