@@ -7,7 +7,10 @@
 <!DOCTYPE html>
 <html lang="sk">
 <head>
-    <title><?= \App\Config\Configuration::APP_NAME ?></title>
+    <meta charset="UTF-8">
+    <title>PIVYON</title>
+    <link rel="icon" type="image/png" href="images/logo.png"/>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
@@ -18,15 +21,34 @@
     <script src="public/js/script.js"></script>
 </head>
 <body>
-<nav class="navbar navbar-expand-sm bg-light">
+<nav class="navbar navbar-expand-sm navbar-dark bg-purple" aria-label="Third navbar example">
     <div class="container-fluid">
         <a class="navbar-brand" href="<?= $link->url("home.index") ?>">
-            <img src="public/images/vaiicko_logo.png" title="<?= \App\Config\Configuration::APP_NAME ?>"
-                 title="<?= \App\Config\Configuration::APP_NAME ?>">
+            <img src="images/logo.png" alt="Logo" width="50" height="50">
         </a>
-        <ul class="navbar-nav me-auto">
+        <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="<?= $link->url("home.contact") ?>">Kontakt</a>
+                <a class="nav-link" href="<?= $link->url("home.index") ?>">Domov</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="<?= $link->url("home.uctovnictvo") ?>">Účtovníctvo</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="<?= $link->url("home.balikovo") ?>">Balíkovo</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="<?= $link->url("home.eshop") ?>">E-shop</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="<?= $link->url("home.recenzie") ?>">Recenzie</a>
             </li>
         </ul>
         <?php if ($auth->isLogged()) { ?>
@@ -49,6 +71,7 @@
     <div class="web-content">
         <?= $contentHTML ?>
     </div>
+
 </div>
 </body>
 </html>

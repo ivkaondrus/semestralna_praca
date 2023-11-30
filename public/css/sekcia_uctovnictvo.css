@@ -1,0 +1,28 @@
+
+.obrazky_uctovnictvo {
+    margin-left: 32vw;
+    margin-right: 50vw;
+    float: inherit;
+    width: 50vw;
+}
+.popis_sekcie_uctovnictvo, .blizsie_info, .hlavicka_tabulky, .cennik tr, .kontakty  {
+    color: lightgray;
+    font-family: "Comic Sans MS", sans-serif;
+    text-align: center;
+}
+table, th, td {
+    border: 2px solid black;
+    border-collapse: collapse;
+    top: 60vw;
+    margin-right: auto;
+    margin-left: auto;
+}
+.cennik th {
+    color: lightgray;
+    background: purple;
+    text-align: center;
+    font-family: "Comic Sans MS", sans-serif;
+}
+.text-light-gray:hover {
+    color: white;
+}

@@ -1,0 +1,33 @@
+
+.carousel .carousel-item {
+    height: 400px;
+}
+.carousel-item img {
+    position: absolute;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+    min-height: 100px;
+    height: 40vw;
+    width: 40vw;
+}
+.hlavicka {
+    color: lightgray;
+    font-family: "Comic Sans MS", sans-serif;
+    font-size: x-large;
+}
+.images {
+    height: 15vw;
+    width: 15vw;
+}
+.text {
+    color: lightgray;
+    text-align: right;
+    top: -50px;
+    font-family: "Comic Sans MS", sans-serif;
+}
+.text-light-gray:hover {
+    color: white;
+}
+
+

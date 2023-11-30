@@ -1,3 +1,6 @@
+<?php
+/** @var \App\Core\LinkGenerator $link */
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,47 +13,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 
-    <link rel="stylesheet" href="sekcia_uctovnictvo.css">
+    <link rel="stylesheet" href="public/css/sekcia_uctovnictvo.css">
 
 </head>
 <body>
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark" aria-label="Third navbar example">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-            <img src="images/logo.png" alt="" width="60" height="54">
-            PIVYON</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarsExample03">
-            <ul class="navbar-nav me-auto mb-2 mb-sm-0">
-                <li class="nav-item">
-                    <a class="nav-link" href="domovska_stranka.html">Domov</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="sekcia_uctovnictvo.html">Účtovníctvo</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Balíkovo</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="sekcia_eshop.html">E-shop</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Pre Vás</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Prihlásenie</a></li>
-                        <li><a class="dropdown-item" href="#">Registrácia</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <form role="search">
-                <input class="form-control" type="search" placeholder="Vyhľadávanie" aria-label="Search">
-            </form>
-        </div>
-    </div>
-</nav>
 <div class="popis_sekcie_uctovnictvo">
     <p><br>
         Naša firma ponúka spoľahlivé a zodpovedné vedenie jednoduchého účtovníctva pre podnikateľov.
@@ -112,21 +78,21 @@
         <td></td>
         <td>60€/mes.</td>
     </tr>
-    </table>
+</table>
 <br>
 <div class="blizsie_info">
     <p>
-        Ak máte záujem o niektorú z našich služieb, neváhajte nás kontaktovať na nižšie uvedenom telefónnom čísle alebo emaili.
+        Ak máte záujem o niektorú z našich služieb, neváhajte nás kontaktovať na: tel. číslo: 0901 234 567 alebo e-mail: pivyon@gmail.com
     </p>
 </div>
-<footer>
-    <br>
-    <div class="kontakty">
-        <p>Kontakt:</p>
-        <p>tel.: 0901 234 567</p>
-        <p><a href="mailto:pivyon@webmail.com">pivyon@webmail.com</a></p><br>
-    </div>
-    <div class="autor"><p> Autor stránky: Ivana Ondrušová</p></div>
-</footer>
+<div class="bg-purple p-3 text-center">
+    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+        <li class="nav-item"><a href="<?= $link->url("home.index") ?>" class="nav-link text-light-gray">Domov</a></li>
+        <li class="nav-item"><a href="<?= $link->url("home.uctovnictvo") ?>" class="nav-link text-light-gray">Účtovníctvo</a></li>
+        <li class="nav-item"><a href="<?= $link->url("home.balikovo") ?>" class="nav-link text-light-gray">Balíkovo</a></li>
+        <li class="nav-item"><a href="<?= $link->url("home.eshop") ?>" class="nav-link text-light-gray">E-shop</a></li>
+    </ul>
+    <p class="text-center text-light-gray">© 2023 made by Ondrušová Ivana</p>
+</div>
 </body>
 </html>

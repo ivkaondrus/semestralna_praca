@@ -1,7 +1,35 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background: linear-gradient(-45deg, purple, darkorchid, mediumorchid, mediumpurple);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    height: 100vh;
+}
+/* zdroj pre variaciu gradientov: https://1stwebdesigner.com/15-css-background-effects/ */
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
 .navbar {
     border-bottom: 1px solid grey;
+    background-color: purple;
 }
-
-.navbar-brand img {
-    width: 50px;
+.nav-item, .navbar-brand, .text-light-gray, .text-center, .nav-link {
+    font-size: medium;
+    font-family: "Comic Sans MS", sans-serif;
+    color: lightgray;
+}
+.bg-purple {
+    background: purple;
 }

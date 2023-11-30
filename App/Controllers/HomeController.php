@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 use App\Core\AControllerBase;
 use App\Core\Responses\Response;
+use App\Models\Post;
+use App\Models\Recenzia;
 
 /**
  * Class HomeController
@@ -31,12 +33,34 @@ class HomeController extends AControllerBase
         return $this->html();
     }
 
+    public function eshop(): Response
+    {
+        return $this->html();
+    }
+
+    public function uctovnictvo(): Response
+    {
+        return $this->html();
+    }
+
+    public function balikovo(): Response
+    {
+        return $this->html();
+    }
+
+    public function recenzie(): Response
+    {
+        $recenzie = Recenzia::getAll();
+        return $this->html(
+            [
+                'recenzie' => $recenzie
+            ]
+        );
+    }
+
     /**
      * Example of an action accessible without authorization
      * @return \App\Core\Responses\ViewResponse
      */
-    public function contact(): Response
-    {
-        return $this->html();
-    }
+
 }
