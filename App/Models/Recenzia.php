@@ -4,9 +4,8 @@ use App\Core\Model;
 class Recenzia extends Model
 {
     protected ?int $id = null;
-    protected ?string $prihlaseny_username;
+    protected ?int $rating = null;
     protected ?string $text_r;
-    protected ?string $obrazok;
 
     public function getId(): ?int
     {
@@ -18,14 +17,14 @@ class Recenzia extends Model
         $this->id = $id;
     }
 
-    public function getPrihlasenyUsername(): ?string
+    public function getRating(): ?int
     {
-        return $this->prihlaseny_username;
+        return $this->rating;
     }
 
-    public function setPrihlasenyUsername(?string $prihlaseny_username): void
+    public function setRating(?int $rating): void
     {
-        $this->prihlaseny_username = $prihlaseny_username;
+        $this->rating = $rating;
     }
 
     public function getText(): ?string
@@ -38,14 +37,5 @@ class Recenzia extends Model
         $this->text_r = $text;
     }
 
-    public function getObrazok(): ?string
-    {
-        return $this->obrazok;
-    }
-
-    public function setObrazok(?string $obrazok): void
-    {
-        $this->obrazok = $obrazok;
-    }
 
 }

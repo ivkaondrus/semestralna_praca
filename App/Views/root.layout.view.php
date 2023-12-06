@@ -18,7 +18,8 @@
             crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="public/css/styl.css">
-    <script src="public/js/script.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <link rel="stylesheet" href="public/css/recenzia_formular.css">
 </head>
 <body>
 <nav class="navbar navbar-expand-sm navbar-dark bg-purple" aria-label="Third navbar example">

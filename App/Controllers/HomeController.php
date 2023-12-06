@@ -4,7 +4,6 @@ namespace App\Controllers;
 
 use App\Core\AControllerBase;
 use App\Core\Responses\Response;
-use App\Models\Post;
 use App\Models\Recenzia;
 
 /**
