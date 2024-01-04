@@ -24,5 +24,8 @@ table, th, td {
     font-family: "Comic Sans MS", sans-serif;
 }
 .text-light-gray:hover {
-    color: white;
+    color: plum;
+}
+.text-light-gray {
+    color: lightgray;
 }

@@ -21,6 +21,12 @@ body {
         background-position: 0% 50%;
     }
 }
+h1 {
+    color: lightgray;
+    font-family: "Comic Sans MS", sans-serif;
+    font-size: x-large;
+
+}
 .navbar {
     border-bottom: 1px solid grey;
     background-color: purple;
@@ -32,4 +38,11 @@ body {
 }
 .bg-purple {
     background: purple;
+}
+
+.text-light-gray:hover {
+    color: plum;
+}
+.text-light-gray {
+    color: lightgray;
 }

@@ -1,0 +1,22 @@
+.popis_sekcie_balikovo {
+    color: lightgray;
+    font-size: medium;
+    font-family: "Comic Sans MS", sans-serif;
+    text-align: center;
+}
+
+.map-container {
+    display: flex;
+    justify-content: center; /* Zarovnanie obsahu na stred */
+    align-items: center; /* Zarovnanie obsahu na stred */
+    height: 30vw;
+}
+
+.img-fluid {
+    height: 7vw;
+    width: 7vw;
+    left: 10vw;
+    float: left;
+
+
+}

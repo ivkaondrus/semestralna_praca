@@ -3,6 +3,7 @@
     font-family: "Comic Sans MS", sans-serif;
     color: lightgray;
 }
+
 .hodnotenie {
     position: relative;
     width: 180px;
@@ -18,12 +19,11 @@
 }
 
 .rating__result {
-    position: absolute;
     top: 0;
-    left: 0;
+    left: 30px;
     transform: translateY(-10px) translateX(-5px);
     z-index: -9;
-    font: 3em Arial, Helvetica, sans-serif;
+    font: 2em Arial, Helvetica, sans-serif;
     color: #ebebeb8e;
     pointer-events: none;
 }
@@ -37,4 +37,11 @@
 
 .rating__star:hover {
     filter: drop-shadow(1px 1px 4px gold);
+}
+
+.text-light-gray:hover {
+    color: plum;
+}
+.text-light-gray {
+    color: lightgray;
 }

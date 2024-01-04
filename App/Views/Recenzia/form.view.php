@@ -31,4 +31,5 @@
                   id="post-text"><?= @$data['recenzia']?->getText() ?></textarea>
     </div>
     <button type="submit" class="btn btn-primary">Uložiť</button>
+
 </form>
