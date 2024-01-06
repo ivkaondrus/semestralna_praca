@@ -24,8 +24,16 @@ $layout = 'auth';
                             <input name="password" type="password" id="password" class="form-control"
                                    placeholder="Password" required>
                         </div>
+                        <select name="role">
+                            <option value="admin">Admin</option>
+                            <option value="customer">Customer</option>
+                        </select>
                         <div class="text-center">
                             <button class="btn btn-primary" type="submit" name="submit">Prihlásiť
+                            </button>
+                        </div>
+                        <div class="text-center">
+                            <button class="btn btn-primary" type="submit" name="submit">Registrovať sa
                             </button>
                         </div>
                     </form>

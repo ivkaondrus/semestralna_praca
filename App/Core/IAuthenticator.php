@@ -11,11 +11,11 @@ interface IAuthenticator
 {
     /**
      * Perform user login
-     * @param $userLogin
-     * @param $pass
+     * @param $login
+     * @param $password
      * @return bool
      */
-    public function login($userLogin, $pass): bool;
+    public function login($login, $password, $role): bool;
 
     /**
      * Perform user login
@@ -46,4 +46,16 @@ interface IAuthenticator
      * @return bool
      */
     public function isLogged(): bool;
+
+    /**
+     * Return the role of user
+     * @return string
+     */
+    public function getLoggedUserRole(): string;
+
+    /**
+     * Return, whether the user is admin or not
+     * @return bool
+     */
+    public function isLoggedAsAdmin(): bool;
 }

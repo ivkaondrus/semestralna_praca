@@ -32,9 +32,18 @@ class AuthController extends AControllerBase
         $formData = $this->app->getRequest()->getPost();
         $logged = null;
         if (isset($formData['submit'])) {
-            $logged = $this->app->getAuth()->login($formData['login'], $formData['password']);
-            if ($logged) {
-                return $this->redirect($this->url("admin.index"));
+            $login = $formData['login'];
+            $password = $formData['password'];
+            $selected_role = $formData['role'];
+            /*$hashed_password = password_hash($password, PASSWORD_BCRYPT);*/
+            $logged = $this->app->getAuth()->login($login, $password, $selected_role);
+            if ($logged /*&& password_verify($password, $password)*/) {
+                if ($selected_role == "admin") {
+                    return $this->redirect($this->url("admin.index"));
+                } else {
+                    return $this->redirect($this->url("customer.index"));
+                }
+
             }
         }
 

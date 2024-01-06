@@ -3,6 +3,7 @@
 namespace App\Auth;
 
 use App\Core\IAuthenticator;
+use App\Models\User;
 
 /**
  * Class DummyAuthenticator
@@ -30,15 +31,22 @@ class DummyAuthenticator implements IAuthenticator
      * @return bool
      * @throws \Exception
      */
-    public function  login($login, $password): bool
+    public function  login($login, $password, $role): bool
     {
-        // user is logged in when login equals password
-        if ($login == $password) {
-            $_SESSION['user'] = $login;
-            return true;
-        } else {
-            return false;
+        $users = User::getAll();
+
+        foreach ($users as $user) {
+            if($login == $user->getLogin()) {
+                if($password == $user->getPassword()) {
+                    $_SESSION['user'] = $login;
+                    return true;
+                } else {
+                    return false;
+                }
+            }
         }
+
+        return false;
     }
 
     /**
@@ -86,5 +94,15 @@ class DummyAuthenticator implements IAuthenticator
     public function getLoggedUserId(): mixed
     {
         return $_SESSION['user'];
+    }
+
+    public function getLoggedUserRole(): string
+    {
+        return isset($_SESSION['role']) ? $_SESSION['role'] : throw new \Exception("User role not defined");
+    }
+
+    public function isLoggedAsAdmin(): bool
+    {
+        return isset($_SESSION['role']) && $_SESSION['role'] == "admin";
     }
 }
