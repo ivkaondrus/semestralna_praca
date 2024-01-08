@@ -6,6 +6,9 @@ class Recenzia extends Model
     protected ?int $id = null;
     protected ?int $rating = null;
     protected ?string $text_r;
+    protected ?string $picture = null;
+    protected ?string $author = null;
+
 
     public function getId(): ?int
     {
@@ -36,6 +39,28 @@ class Recenzia extends Model
     {
         $this->text_r = $text;
     }
+
+    public function getPicture(): ?string
+    {
+        return $this->picture;
+    }
+
+    public function setPicture(?string $picture): void
+    {
+        $this->picture = $picture;
+    }
+
+
+    public function getAuthor(): ?string
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(?string $author): void
+    {
+        $this->author = $author;
+    }
+
 
 
 }

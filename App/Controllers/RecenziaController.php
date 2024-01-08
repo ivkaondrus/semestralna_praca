@@ -9,6 +9,7 @@ use App\Core\Model;
 use App\Core\Responses\RedirectResponse;
 use App\Core\Responses\Response;
 use App\Models\Recenzia;
+use App\Helpers\FileStorage;
 use http\Exception;
 use PDO;
 
@@ -19,6 +20,35 @@ class RecenziaController extends AControllerBase
      */
     public function index(): Response
     {
+        return $this->html();
+    }
+
+    public function authorize($action): bool
+    {
+        switch ($action) {
+            case 'edit' :
+            case 'delete' :
+                // get id of recenzia to check
+                $id = (int)$this->request()->getValue("id");
+                // get recenzia from db
+                $recenziaToCheck = Recenzia::getOne($id);
+                // check if the logged login is the same as the recenzia author
+                // if yes, he can edit and delete post
+                return $recenziaToCheck->getAuthor() == $this->app->getAuth()->getLoggedUserName();
+            case 'save':
+                // get id of post to check
+                $id = (int)$this->request()->getValue("id");
+                if ($id > 0 ) {
+                    // only author can save the edited recenzia
+                    $recenziaToCheck = Recenzia::getOne($id);
+                    return $recenziaToCheck->getAuthor()() == $this->app->getAuth()->getLoggedUserName();
+                } else {
+                    // anyone can add a new recenzia
+                    return $this->app->getAuth()->isLogged();
+                }
+            default:
+                return $this->app->getAuth()->isLogged();
+        }
     }
 
     public function add(): Response
@@ -28,7 +58,7 @@ class RecenziaController extends AControllerBase
 
     public function edit(): Response
     {
-        $id = (int) $this->request()->getValue('id');
+        $id = (int)$this->request()->getValue('id');
         $recenzia = Recenzia::getOne($id);
 
         if (is_null($recenzia)) {
@@ -44,45 +74,64 @@ class RecenziaController extends AControllerBase
 
     public function save()
     {
-        $errors = $this->formError();
-        if (count($errors) > 0) {
-            return $this->html(
-                [
-                    'errors' => $errors
-                ], 'edit'
-            );
-        }
+        $id = (int)$this->request()->getValue('id');
+        $oldFileName = "";
 
-        $id = $this->request()->getValue('id');
         if ($id > 0) {
             $recenzia = Recenzia::getOne($id);
+            $oldFileName = $recenzia->getPicture();
         } else {
             $recenzia = new Recenzia();
+            $recenzia->setAuthor($this->app->getAuth()->getLoggedUserName());
         }
         $recenzia->setRating($this->request()->getValue('rating'));
         $recenzia->setText($this->request()->getValue('text_r'));
+        $recenzia->setPicture($this->request()->getFiles()['picture']['name']);
 
-
-
-        $recenzia->save();
-
-        return $this->redirect($this->url('home.recenzie'));
+        $formErrors = $this->formErrors();
+        if (count($formErrors) > 0) {
+            return $this->html(
+                [
+                    'recenzia' => $recenzia,
+                    'errors' => $formErrors
+                ], 'add'
+            );
+        } else {
+            if ($oldFileName != "") {
+                FileStorage::deleteFile($oldFileName);
+            }
+            $newFileName = FileStorage::saveFile($this->request()->getFiles()['picture']);
+            $recenzia->setPicture($newFileName);
+            $recenzia->save();
+            return new RedirectResponse($this->url("home.index"));
+        }
     }
 
     public function delete()
     {
-        $id = (int) $this->request()->getValue('id');
+        $id = (int)$this->request()->getValue('id');
         $recenzia = Recenzia::getOne($id);
-        $recenzia->delete();
 
-        return $this->redirect($this->url('home.recenzie'));
+        if (is_null($recenzia)) {
+            throw new HTTPException(404);
+        } else {
+            FileStorage::deleteFile($recenzia->getPicture());
+            $recenzia->delete();
+            return new RedirectResponse($this->url("home.index"));
+        }
     }
 
-    private function formError(): array
+    private function formErrors(): array
     {
         $errors = [];
+        if ($this->request()->getFiles()['picture']['name'] == "") {
+            $errors[] = "Pole Obrázok zakúpeného produktu musí byť vyplnené!";
+        }
         if ($this->request()->getValue('text_r') == "") {
-            $errors[] = "Pole Text príspevku je povinné!";
+            $errors[] = "Pole Text príspevku musí byť vyplnené!";
+        }
+        if ($this->request()->getFiles()['picture']['name'] != "" && !in_array($this->request()->getFiles()['picture']['type'], ['image/jpeg', 'image/png'])) {
+            $errors[] = "Obrázok musí byť typu JPG alebo PNG!";
         }
         return $errors;
     }

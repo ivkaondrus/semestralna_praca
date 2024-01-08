@@ -10,3 +10,16 @@
 .text-light-gray {
     color: lightgray;
 }
+
+.btn-primary {
+    background: plum;
+    color: white;
+    border: 1px solid darkorchid;
+    margin: 0 5px;
+}
+
+.btn-primary:hover {
+    background: mediumpurple;
+    color: white;
+    border: 1px solid darkorchid;
+}

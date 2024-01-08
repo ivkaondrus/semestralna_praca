@@ -30,6 +30,14 @@
         <textarea class="form-control" aria-label="With textarea" name="text_r" required
                   id="post-text"><?= @$data['recenzia']?->getText() ?></textarea>
     </div>
+    <label for="inputGroupFile02" class="form-label">Obrázok zakúpeného produktu</label>
+    <?php if (@$data['recenzia']?->getPicture() != ""): ?>
+        <div>Pôvodný súbor: <?= substr($data['recenzia']->getPicture(), strpos($data['recenzia']->getPicture(), '-') + 1)  ?></div>
+    <?php endif; ?>
+    <div class="input-group mb-3 has-validation">
+        <!--        <input type="text" class="form-control" name="picture" id="inputGroupFile02" value="--><?php //= @$data['post']?->getPicture() ?><!--">-->
+        <input type="file" class="form-control " name="picture" id="inputGroupFile02">
+    </div>
     <button type="submit" class="btn btn-primary">Uložiť</button>
 
 </form>
